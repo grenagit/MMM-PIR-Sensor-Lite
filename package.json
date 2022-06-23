@@ -1,0 +1,24 @@
+{
+  "name": "MMM-PIR-Sensor-Lite",
+  "version": "0.1.0",
+  "description": "Lite module for a Magic Mirror device manage monitor with PIR motion sensor.",
+  "main": "MMM-PIR-Sensor-Lite.js",
+  "author": "Grena",
+  "license": "MIT",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grenagit/MMM-PIR-Sensor-Lite.git"
+  },
+  "keywords": [
+    "motion",
+    "sensor",
+    "pir",
+    "monitor",
+    "screen",
+    "standby",
+    "automatic"
+  ]
+}
