@@ -1,7 +1,7 @@
 # Module: MMM-PIR-Sensor-Lite
 This module manage monitor with PIR motion sensor (automatic standby when presence isn't detected).
 
-Title, countdown and dectetion icon display may be enabled or disabled. 
+Title, countdown and detection icon display may be enabled or disabled. 
 
 [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror)
 
@@ -71,6 +71,7 @@ The following properties can be configured:
 | Option                       | Description
 | ---------------------------- | -----------
 | `sensorPin`                  | The [GPIO pin](https://pinout.xyz/) of the sensor. <br><br> This value is **REQUIRED**
+| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `vcgencmd` - `xrandr` <br> **Default value:** `vcgencmd`
 | `title`                      | The title. It's hidden if `title: ""` <br><br> **Default value:** `Automatic Standby`
 | `deactivateDelay`            | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `15 * 60 * 1000` (15 minutes)
 | `updateInterval`             | How often does the countdown needs to be updated? (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
@@ -80,6 +81,14 @@ The following properties can be configured:
 | `hoursLabel`                 | Hours label <br> **Default value:** `h`
 | `minutesLabel`               | Minutes label <br> **Default value:** `m`
 | `secondsLabel`               | Seconds label <br> **Default value:** `s`
+
+### Command
+
+- `vcgencmd`
+> https://www.elinux.org/RPI_vcgencmd_usage
+
+- `xrandr`
+> 
 
 ### License
 

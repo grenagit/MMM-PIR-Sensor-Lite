@@ -35,18 +35,34 @@ module.exports = NodeHelper.create({
 	},
 	
 	activateMonitor: function() {
-		var self = this;
-		exec("/usr/bin/vcgencmd display_power").stdout.on('data', function(data) {
-			if(data.indexOf("display_power=0") === 0) {
-				self.sendSocketNotification("POWER_ON", true);
-				exec("/usr/bin/vcgencmd display_power 1", null);
-			}
-		});
+		switch(this.config.commandType) {
+			case 'vcgencmd':
+				var self = this;
+				exec("/usr/bin/vcgencmd display_power").stdout.on('data', function(data) {
+					if(data.indexOf("display_power=0") === 0) {
+						self.sendSocketNotification("POWER_ON", true);
+						exec("/usr/bin/vcgencmd display_power 1", null);
+					}
+				});
+				break;
+				
+			case 'xrandr':
+				exec("xrandr --output HDMI-1 --auto", null);
+				break;
+		}
 	},
 
 	deactivateMonitor: function() {
-		this.sendSocketNotification("POWER_OFF", true);
-		exec("/usr/bin/vcgencmd display_power 0", null);
+		switch(this.config.commandType) {
+			case 'vcgencmd':
+				this.sendSocketNotification("POWER_OFF", true);
+				exec("/usr/bin/vcgencmd display_power 0", null);
+				break;
+			
+			case 'xrandr':
+				exec("xrandr --output HDMI-1 --off", null);
+				break;
+		}
 	},
 
 	resetTimeout: function() {
