@@ -32,7 +32,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 	// Define start sequence
 	start: function() {
 		Log.info("Starting module: " + this.name);
-	
+
 		this.resetCountdown();
 
 		this.loaded = false;
@@ -55,7 +55,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
-		
+
 		if(this.config.showCountDown) {
 			if(this.config.title !== "") {
 				var title = document.createElement("div");
@@ -66,17 +66,17 @@ Module.register("MMM-PIR-Sensor-Lite", {
 
 			var medium = document.createElement("div");
 			medium.className = "medium";
-			
+
 			if(this.config.showDetection && this.detected) {
 				var icon = document.createElement("span");
 				icon.className = "fas fa-crosshairs bright";
 				medium.appendChild(icon);
 			}
-			
+
 			var spacer = document.createElement("span");
 			spacer.innerHTML = "&nbsp;";
 			medium.appendChild(spacer);
-			
+
 			var time = document.createElement("span");
 			time.className = "bright";
 			if(this.diffHours > 0) {
@@ -90,7 +90,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 
 			wrapper.appendChild(medium);
 		}
-		
+
 		return wrapper;
 	},
 
@@ -115,27 +115,27 @@ Module.register("MMM-PIR-Sensor-Lite", {
 	capFirst: function (string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	},
-	
+
 	// Set icon timeout
 	setIconTimeout: function() {
 		this.detected = true;
 		this.updateDom();
 		clearTimeout(this.iconTimeout);
-		
+
 		var self = this;
 		self.iconTimeout = setTimeout(function() {
 				self.detected = false;
 				self.updateDom();
 		}, self.config.animationSpeed);
 	},
-	
+
 	// Reset the countdown
 	resetCountdown: function() {
 		this.remainingTime = this.config.deactivateDelay;
 		this.updateCountdown();
-		
+
 		clearInterval(this.countdownInterval);
-		
+
 		var self = this;
 		self.countdownInterval = setInterval(function() {
 			self.remainingTime -= self.config.updateInterval;
@@ -145,13 +145,13 @@ Module.register("MMM-PIR-Sensor-Lite", {
 			}
 		}, self.config.updateInterval);
 	},
-	
+
 	// Update variables for countdown display
 	updateCountdown: function() {
 		this.diffHours = Math.floor((this.remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		this.diffMinutes = Math.floor((this.remainingTime % (1000 * 60 * 60)) / (1000 * 60));
 		this.diffSeconds = Math.floor((this.remainingTime % (1000 * 60)) / 1000);
-		
+
 		this.updateDom();
 	}
 

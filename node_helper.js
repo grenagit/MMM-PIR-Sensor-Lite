@@ -39,8 +39,8 @@ module.exports = NodeHelper.create({
 		exec("/usr/bin/vcgencmd display_power").stdout.on('data', function(data) {
 			if(data.indexOf("display_power=0") === 0) {
 				self.sendSocketNotification("POWER_ON", true);
-		  	exec("/usr/bin/vcgencmd display_power 1", null);
-		 	}
+				exec("/usr/bin/vcgencmd display_power 1", null);
+			}
 		});
 	},
 
@@ -48,7 +48,7 @@ module.exports = NodeHelper.create({
 		this.sendSocketNotification("POWER_OFF", true);
 		exec("/usr/bin/vcgencmd display_power 0", null);
 	},
-	
+
 	resetTimeout: function() {
 		var self = this;
 		
