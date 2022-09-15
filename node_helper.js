@@ -63,7 +63,7 @@ module.exports = NodeHelper.create({
 				break;
 				
 			case 'xset':
-				exec("xset dpms force on", null);
+				exec("xset dpms force off", null);
 				break;
 		}
 	},
