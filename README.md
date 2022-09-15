@@ -71,7 +71,7 @@ The following properties can be configured:
 | Option                       | Description
 | ---------------------------- | -----------
 | `sensorPin`                  | The [GPIO pin](https://pinout.xyz/) of the sensor. <br><br> This value is **REQUIRED**
-| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `vcgencmd` - `xrandr` <br> **Default value:** `vcgencmd`
+| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `vcgencmd`, `xrandr` or `xset`  <br> **Default value:** `vcgencmd`
 | `title`                      | The title. It's hidden if `title: ""` <br><br> **Default value:** `Automatic Standby`
 | `deactivateDelay`            | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `15 * 60 * 1000` (15 minutes)
 | `updateInterval`             | How often does the countdown needs to be updated? (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
@@ -84,12 +84,16 @@ The following properties can be configured:
 
 ### Command
 
-- `vcgencmd`
-> https://www.elinux.org/RPI_vcgencmd_usage
+**Debian 11 Bullseye:**
 
-- `xrandr`
-> 
+Due to a problem between [`vcgencmd` on Raspberry Pi OS Bullseye](https://github.com/raspberrypi/userland/issues/727), please use:
+ - `xrandr` with `commandType: 'xrandr',` in your MMM-PIR-Sensor-Lite's config.
+ - `xset` with `commandType: 'xset',` in your MMM-PIR-Sensor-Lite's config.
+
+**Debian 10 Buster:**
+
+You can continue to use `vcgencmd` (default option).
 
 ### License
 
-This module is licensed under the MIT License
+This module is licensed under the MIT Licens

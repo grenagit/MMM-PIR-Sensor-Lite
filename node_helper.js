@@ -44,6 +44,10 @@ module.exports = NodeHelper.create({
 			case 'xrandr':
 				exec("xrandr --output HDMI-1 --auto", null);
 				break;
+				
+			case 'xset':
+				exec("xset dpms force on", null);
+				break;
 		}
 	},
 
@@ -56,6 +60,10 @@ module.exports = NodeHelper.create({
 			
 			case 'xrandr':
 				exec("xrandr --output HDMI-1 --off", null);
+				break;
+				
+			case 'xset':
+				exec("xset dpms force on", null);
 				break;
 		}
 	},
