@@ -37,13 +37,8 @@ module.exports = NodeHelper.create({
 	activateMonitor: function() {
 		switch(this.config.commandType) {
 			case 'vcgencmd':
-				var self = this;
-				exec("/usr/bin/vcgencmd display_power").stdout.on('data', function(data) {
-					if(data.indexOf("display_power=0") === 0) {
-						self.sendSocketNotification("POWER_ON", true);
-						exec("/usr/bin/vcgencmd display_power 1", null);
-					}
-				});
+				this.sendSocketNotification("POWER_ON", true);
+				exec("/usr/bin/vcgencmd display_power 1", null);
 				break;
 				
 			case 'xrandr':
