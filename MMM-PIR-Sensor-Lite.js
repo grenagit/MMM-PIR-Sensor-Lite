@@ -50,6 +50,12 @@ Module.register("MMM-PIR-Sensor-Lite", {
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
+-
+		if(!['vcgencmd', 'xrandr', 'xset'].includes(this.config.commandType)) {
+			wrapper.innerHTML = "Please set <i>a command supported (vcgencmd, xrandr or xset)</i> in the config for module: " + this.name + ".";
+			wrapper.className = "dimmed light small";
+			return wrapper;
+		}
 
 		if(!this.loaded) {
 			wrapper.innerHTML = this.translate("LOADING");
