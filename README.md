@@ -5,6 +5,8 @@ Title, countdown and detection icon display may be enabled or disabled.
 
 [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror)
 
+⚠️ **MMM-PIR-Sensor-Lite 1.2** (September 2022) allows you to manage monitor on **Debian 11 Bullseye** with `xrandr` (default option). The use of `vcgencmd` (previous option) is always possible with an additional option. *More information below...*
+
 ## Installation:
 
 In your terminal, go to your MagicMirror's Module folder:
@@ -71,7 +73,7 @@ The following properties can be configured:
 | Option                       | Description
 | ---------------------------- | -----------
 | `sensorPin`                  | The [GPIO pin](https://pinout.xyz/) of the sensor. <br><br> This value is **REQUIRED**
-| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `vcgencmd`, `xrandr` or `xset`  <br> **Default value:** `vcgencmd`
+| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `vcgencmd`, `xrandr` or `xset`  <br> **Default value:** `xrandr`
 | `title`                      | The title. It's hidden if `title: ""` <br><br> **Default value:** `Automatic Standby`
 | `deactivateDelay`            | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `15 * 60 * 1000` (15 minutes)
 | `updateInterval`             | How often does the countdown needs to be updated? (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
@@ -87,12 +89,12 @@ The following properties can be configured:
 **Debian 11 Bullseye:**
 
 Due to a problem between [`vcgencmd` on Raspberry Pi OS Bullseye](https://github.com/raspberrypi/userland/issues/727), please use:
- - `xrandr` with `commandType: 'xrandr',` in your MMM-PIR-Sensor-Lite's config.
+ - `xrandr` (default option).
  - `xset` with `commandType: 'xset',` in your MMM-PIR-Sensor-Lite's config.
 
 **Debian 10 Buster:**
 
-You can continue to use `vcgencmd` (default option).
+You can continue to use `vcgencmd` with `commandType: 'vcgencmd',` in your MMM-PIR-Sensor-Lite's config.
 
 ### License
 

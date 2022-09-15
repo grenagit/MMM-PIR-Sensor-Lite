@@ -13,7 +13,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 	// Default module config
 	defaults: {
 		sensorPin: 0, // GPIO pin
-		commandType: 'vcgencmd', // Type of command used
+		commandType: 'xrandr', // Type of command used
 		title: "Automatic Standby",
 		deactivateDelay: 15 * 60 * 1000, // 15 minutes
 		updateInterval: 1000, // 1 second
