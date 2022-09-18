@@ -15,6 +15,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 		sensorPin: 0, // GPIO pin
 		commandType: 'xrandr', // Type of command used
 		title: "Automatic Standby",
+		rotation: 'normal',
 		deactivateDelay: 15 * 60 * 1000, // 15 minutes
 		updateInterval: 1000, // 1 second
 		animationSpeed: 1000, // 1 second
