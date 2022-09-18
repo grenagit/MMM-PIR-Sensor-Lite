@@ -35,9 +35,9 @@ module.exports = NodeHelper.create({
 	},
 	
 	activateMonitor: function() {
+		this.sendSocketNotification("POWER_ON", true);
 		switch(this.config.commandType) {
 			case 'vcgencmd':
-				this.sendSocketNotification("POWER_ON", true);
 				exec("/usr/bin/vcgencmd display_power 1", null);
 				break;
 				
@@ -52,9 +52,9 @@ module.exports = NodeHelper.create({
 	},
 
 	deactivateMonitor: function() {
+		this.sendSocketNotification("POWER_OFF", true);
 		switch(this.config.commandType) {
 			case 'vcgencmd':
-				this.sendSocketNotification("POWER_OFF", true);
 				exec("/usr/bin/vcgencmd display_power 0", null);
 				break;
 			
