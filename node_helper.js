@@ -33,18 +33,18 @@ module.exports = NodeHelper.create({
 			}
 		});
 	},
-	
+
 	activateMonitor: function() {
 		this.sendSocketNotification("POWER_ON", true);
 		switch(this.config.commandType) {
 			case 'vcgencmd':
 				exec("/usr/bin/vcgencmd display_power 1", null);
 				break;
-				
+
 			case 'xrandr':
 				exec("xrandr --output HDMI-1 --rotate " + this.config.rotation + " --auto", null);
 				break;
-				
+
 			case 'xset':
 				exec("xset dpms force on", null);
 				break;
@@ -57,11 +57,11 @@ module.exports = NodeHelper.create({
 			case 'vcgencmd':
 				exec("/usr/bin/vcgencmd display_power 0", null);
 				break;
-			
+
 			case 'xrandr':
 				exec("xrandr --output HDMI-1 --off", null);
 				break;
-				
+
 			case 'xset':
 				exec("xset dpms force off", null);
 				break;
@@ -70,11 +70,11 @@ module.exports = NodeHelper.create({
 
 	resetTimeout: function() {
 		var self = this;
-		
+
 		clearTimeout(self.timeout);
 
 		self.timeout = setTimeout(function() {
-				self.deactivateMonitor();
+			self.deactivateMonitor();
 		}, self.config.deactivateDelay);
 	},
 
