@@ -18,6 +18,7 @@ module.exports = NodeHelper.create({
 
 	start: function() {
 		this.started = false;
+		this.activated = true;
 	},
 
 	getDataPIR: function() {
@@ -28,14 +29,17 @@ module.exports = NodeHelper.create({
 		process.stdout.on('data', function(data) {
 			if(data.indexOf("USER_PRESENCE") === 0) {
 				self.sendSocketNotification("USER_PRESENCE", true);
-				self.activateMonitor();
 				self.resetTimeout();
+				if(self.activated == false) {
+					self.activateMonitor();
+				}
 			}
 		});
 	},
 
 	activateMonitor: function() {
 		this.sendSocketNotification("POWER_ON", true);
+		this.activated = true;
 		switch(this.config.commandType) {
 			case 'vcgencmd':
 				exec("/usr/bin/vcgencmd display_power 1", null);
@@ -53,6 +57,7 @@ module.exports = NodeHelper.create({
 
 	deactivateMonitor: function() {
 		this.sendSocketNotification("POWER_OFF", true);
+		this.activated = false;
 		switch(this.config.commandType) {
 			case 'vcgencmd':
 				exec("/usr/bin/vcgencmd display_power 0", null);
