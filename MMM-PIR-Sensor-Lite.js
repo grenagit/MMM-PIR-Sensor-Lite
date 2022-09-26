@@ -13,7 +13,9 @@ Module.register("MMM-PIR-Sensor-Lite", {
 	// Default module config
 	defaults: {
 		sensorPin: 0, // GPIO pin
+		commandType: 'xrandr', // Type of command used
 		title: "Automatic Standby",
+		rotation: 'normal',
 		deactivateDelay: 15 * 60 * 1000, // 15 minutes
 		updateInterval: 1000, // 1 second
 		animationSpeed: 1000, // 1 second
@@ -46,6 +48,12 @@ Module.register("MMM-PIR-Sensor-Lite", {
 
 		if(this.config.sensorPin === 0) {
 			wrapper.innerHTML = "Please set the <i>GPIO pin number</i> in the config for module: " + this.name + ".";
+			wrapper.className = "dimmed light small";
+			return wrapper;
+		}
+
+		if(!['vcgencmd', 'xrandr', 'xset'].includes(this.config.commandType)) {
+			wrapper.innerHTML = "Please set <i>a command supported (vcgencmd, xrandr or xset)</i> in the config for module: " + this.name + ".";
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}

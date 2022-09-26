@@ -18,6 +18,7 @@ module.exports = NodeHelper.create({
 
 	start: function() {
 		this.started = false;
+		this.activated = true;
 	},
 
 	getDataPIR: function() {
@@ -28,34 +29,57 @@ module.exports = NodeHelper.create({
 		process.stdout.on('data', function(data) {
 			if(data.indexOf("USER_PRESENCE") === 0) {
 				self.sendSocketNotification("USER_PRESENCE", true);
-				self.activateMonitor();
 				self.resetTimeout();
+				if(self.activated == false) {
+					self.activateMonitor();
+				}
 			}
 		});
 	},
-	
+
 	activateMonitor: function() {
-		var self = this;
-		exec("/usr/bin/vcgencmd display_power").stdout.on('data', function(data) {
-			if(data.indexOf("display_power=0") === 0) {
-				self.sendSocketNotification("POWER_ON", true);
+		this.sendSocketNotification("POWER_ON", true);
+		this.activated = true;
+		switch(this.config.commandType) {
+			case 'vcgencmd':
 				exec("/usr/bin/vcgencmd display_power 1", null);
-			}
-		});
+				break;
+
+			case 'xrandr':
+				exec("xrandr --output HDMI-1 --rotate " + this.config.rotation + " --auto", null);
+				break;
+
+			case 'xset':
+				exec("xset dpms force on", null);
+				break;
+		}
 	},
 
 	deactivateMonitor: function() {
 		this.sendSocketNotification("POWER_OFF", true);
-		exec("/usr/bin/vcgencmd display_power 0", null);
+		this.activated = false;
+		switch(this.config.commandType) {
+			case 'vcgencmd':
+				exec("/usr/bin/vcgencmd display_power 0", null);
+				break;
+
+			case 'xrandr':
+				exec("xrandr --output HDMI-1 --off", null);
+				break;
+
+			case 'xset':
+				exec("xset dpms force off", null);
+				break;
+		}
 	},
 
 	resetTimeout: function() {
 		var self = this;
-		
+
 		clearTimeout(self.timeout);
 
 		self.timeout = setTimeout(function() {
-				self.deactivateMonitor();
+			self.deactivateMonitor();
 		}, self.config.deactivateDelay);
 	},
 
