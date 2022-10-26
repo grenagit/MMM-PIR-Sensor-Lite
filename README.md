@@ -73,17 +73,17 @@ The following properties can be configured:
 | Option                       | Description
 | ---------------------------- | -----------
 | `sensorPin`                  | The [GPIO pin](https://pinout.xyz/) of the sensor. <br><br> This value is **REQUIRED**
-| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `vcgencmd`, `xrandr` or `xset` <br> **Default value:** `xrandr`
-| `title`                      | The title. It's hidden if `title: ""` <br><br> **Default value:** `Automatic Standby`
-| `rotation`                   | Direction of content rotation. <br><br> **Possible values:** `'normal`, `left`, `right` or `inverted` <br> **Default value:** `normal`
+| `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `'vcgencmd'`, `'xrandr'` or `'xset'` <br> **Default value:** `'xrandr'`
+| `title`                      | The title. It's hidden if `title: ""` <br><br> **Default value:** `"Automatic Standby"`
+| `rotation`                   | Direction of content rotation. <br><br> **Possible values:** `'normal'`, `'left'`, `'right'` or `'inverted'` <br> **Default value:** `'normal'`
 | `deactivateDelay`            | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `15 * 60 * 1000` (15 minutes)
 | `updateInterval`             | How often does the countdown needs to be updated? (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
 | `animationSpeed`             | Speed of the update animation. (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
 | `showCountDown`              | Show the countdown. <br><br> **Possible values:** `true` or `false` <br> **Default value:** `true`
 | `showDetection `             | Show an icon at each presence detection. <br><br> **Possible values:** `true` or `false` <br> **Default value:** `true`
-| `hoursLabel`                 | Hours label <br> **Default value:** `h`
-| `minutesLabel`               | Minutes label <br> **Default value:** `m`
-| `secondsLabel`               | Seconds label <br> **Default value:** `s`
+| `hoursLabel`                 | Hours label <br> **Default value:** `'h'`
+| `minutesLabel`               | Minutes label <br> **Default value:** `'m'`
+| `secondsLabel`               | Seconds label <br> **Default value:** `'s'`
 
 ### Command
 
