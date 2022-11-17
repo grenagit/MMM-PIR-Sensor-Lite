@@ -99,6 +99,15 @@ Due to a problem between [`vcgencmd` on Raspberry Pi OS Bullseye](https://github
 
 You can continue to use `vcgencmd` with `commandType: 'vcgencmd',` in your MMM-PIR-Sensor-Lite's config.
 
+### Sensor test
+
+In your terminal, run the python script after replacing `SENSOR_PIN` by the [GPIO pin](https://pinout.xyz/) of the sensor:
+```
+python3 -u ~/MagicMirror/modules/MMM-PIR-Sensor-Lite/pir.py SENSOR_PIN
+```
+
+> `USER_PRESENCE` is displayed in your terminal when a presence is detected by the sensor!
+
 ### License
 
 This module is licensed under the MIT Licens
