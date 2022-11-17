@@ -7,6 +7,8 @@ Title, countdown and detection icon display may be enabled or disabled.
 
 ⚠️ **MMM-PIR-Sensor-Lite 1.2** (September 2022) allows you to manage monitor on **Debian 11 Bullseye** with `xrandr` (default option). The use of `vcgencmd` (previous option) is always possible with an additional option. *More information below...*
 
+⚠️ **Raspberry Pi 4** has **2 HDMI outputs**. For now, **MMM-PIR-Sensor-Lite** only works if the monitor is plugged into the **first HDMI port**. Use `xrandr -q` to know the output the monitor is plugged to!
+
 ## Installation:
 
 In your terminal, go to your MagicMirror's Module folder:
