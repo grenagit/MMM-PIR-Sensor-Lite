@@ -64,7 +64,7 @@ module.exports = NodeHelper.create({
 				break;
 
 			case 'xrandr':
-				exec("xrandr --output HDMI-1 --off", null);
+				exec("xrandr --output " + this.config.hdmiPort + " --off", null);
 				break;
 
 			case 'xset':
