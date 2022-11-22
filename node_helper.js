@@ -46,7 +46,7 @@ module.exports = NodeHelper.create({
 				break;
 
 			case 'xrandr':
-				exec("xrandr --output HDMI-1 --rotate " + this.config.rotation + " --auto", null);
+				exec("xrandr --output HDMI-" + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
 				break;
 
 			case 'xset':

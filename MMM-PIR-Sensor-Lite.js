@@ -19,6 +19,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 		deactivateDelay: 15 * 60 * 1000, // 15 minutes
 		updateInterval: 1000, // 1 second
 		animationSpeed: 1000, // 1 second
+		hdmiPort: 1, // 1 or 2
 		showCountDown: true,
 		showDetection: true,
 		hoursLabel: 'h',
