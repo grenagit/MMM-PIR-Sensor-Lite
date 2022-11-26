@@ -7,8 +7,6 @@ Title, countdown and detection icon display may be enabled or disabled.
 
 ⚠️ **MMM-PIR-Sensor-Lite 1.2** (September 2022) allows you to manage monitor on **Debian 11 Bullseye** with `xrandr` (default option). The use of `vcgencmd` (previous option) is always possible with an additional option. *More information below...*
 
-⚠️ **Raspberry Pi 4** has **2 HDMI outputs**. For now, **MMM-PIR-Sensor-Lite** only works if the monitor is plugged into the **first HDMI port**. Use `xrandr -q` to know the output the monitor is plugged to!
-
 ## Installation:
 
 In your terminal, go to your MagicMirror's Module folder:
@@ -76,9 +74,9 @@ The following properties can be configured:
 | ---------------------------- | -----------
 | `sensorPin`                  | The [GPIO pin](https://pinout.xyz/) of the sensor. <br><br> This value is **REQUIRED**
 | `commandType`                | The command used to manage monitor. <br><br> **Possible values:** `'vcgencmd'`, `'xrandr'` or `'xset'` <br> **Default value:** `'xrandr'`
+| `hdmiPort`                   | The HDMI port (required for `xrandr`) <br><br> **Possible values:** `HDMI-1` or `HDMI-2` <br> **Default value:** `HDMI-1`
 | `title`                      | The title. It's hidden if `title: ""` <br><br> **Default value:** `"Automatic Standby"`
 | `rotation`                   | Direction of content rotation. <br><br> **Possible values:** `'normal'`, `'left'`, `'right'` or `'inverted'` <br> **Default value:** `'normal'`
-| `hdmiPort`                   | Select the HDMI-Port (requried for commandType `'xrandr'`) <br><br> **Possible values:** `HDMI-1` or `HDMI-2` <br> **Default value:** `HDMI-1`
 | `deactivateDelay`            | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `15 * 60 * 1000` (15 minutes)
 | `updateInterval`             | How often does the countdown needs to be updated? (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
 | `animationSpeed`             | Speed of the update animation. (Milliseconds) <br><br> **Possible values:**`0` - `5000` <br> **Default value:** `1000` (1 second)
