@@ -14,6 +14,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 	defaults: {
 		sensorPin: 0, // GPIO pin
 		commandType: 'xrandr', // Type of command used
+		hdmiPort: 'HDMI-1', // HDMI port for xrandr
 		title: "Automatic Standby",
 		rotation: 'normal',
 		deactivateDelay: 15 * 60 * 1000, // 15 minutes
