@@ -25,6 +25,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 		hoursLabel: 'h',
 		minutesLabel: 'm',
 		secondsLabel: 's',
+		debugMode: false,
 	},
 
 	// Define required styles

@@ -40,36 +40,42 @@ module.exports = NodeHelper.create({
 	activateMonitor: function() {
 		this.sendSocketNotification("POWER_ON", true);
 		this.activated = true;
-		switch(this.config.commandType) {
-			case 'vcgencmd':
-				exec("/usr/bin/vcgencmd display_power 1", null);
-				break;
+		
+		if(!this.config.debugMode) {
+			switch(this.config.commandType) {
+				case 'vcgencmd':
+					exec("/usr/bin/vcgencmd display_power 1", null);
+					break;
 
-			case 'xrandr':
-				exec("xrandr --output " + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
-				break;
+				case 'xrandr':
+					exec("xrandr --output " + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
+					break;
 
-			case 'xset':
-				exec("xset dpms force on", null);
-				break;
+				case 'xset':
+					exec("xset dpms force on", null);
+					break;
+			}
 		}
 	},
 
 	deactivateMonitor: function() {
 		this.sendSocketNotification("POWER_OFF", true);
 		this.activated = false;
-		switch(this.config.commandType) {
-			case 'vcgencmd':
-				exec("/usr/bin/vcgencmd display_power 0", null);
-				break;
+		
+		if(!this.config.debugMode) {
+			switch(this.config.commandType) {
+				case 'vcgencmd':
+					exec("/usr/bin/vcgencmd display_power 0", null);
+					break;
 
-			case 'xrandr':
-				exec("xrandr --output " + this.config.hdmiPort + " --off", null);
-				break;
+				case 'xrandr':
+					exec("xrandr --output " + this.config.hdmiPort + " --off", null);
+					break;
 
-			case 'xset':
-				exec("xset dpms force off", null);
-				break;
+				case 'xset':
+					exec("xset dpms force off", null);
+					break;
+			}
 		}
 	},
 
