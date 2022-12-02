@@ -109,6 +109,7 @@ Module.register("MMM-PIR-Sensor-Lite", {
 		if(notification === "STARTED") {
 			this.loaded = true;
 			this.updateDom(this.config.animationSpeed);
+			Log.info(this.name + ": PIR sensor start confirmed");
 		} else if(notification === "USER_PRESENCE") {
 			this.setIconTimeout();
 			this.resetCountdown();

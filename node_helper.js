@@ -27,6 +27,11 @@ module.exports = NodeHelper.create({
 
 		var self = this;
 		process.stdout.on('data', function(data) {
+			if(data.indexOf("PIR_START") === 0) {
+				self.sendSocketNotification("STARTED", true);
+				self.started = true;
+			}
+		
 			if(data.indexOf("USER_PRESENCE") === 0) {
 				self.sendSocketNotification("USER_PRESENCE", true);
 				self.resetTimeout();
@@ -94,9 +99,6 @@ module.exports = NodeHelper.create({
 		if (notification === 'CONFIG' && self.started == false) {
 			self.config = payload;
 			self.activateMonitor();
-
-			self.sendSocketNotification("STARTED", true);
-			self.started = true;
 
 			self.getDataPIR();
 			self.resetTimeout();

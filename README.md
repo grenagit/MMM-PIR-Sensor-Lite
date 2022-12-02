@@ -99,14 +99,32 @@ Due to a problem between [`vcgencmd` on Raspberry Pi OS Bullseye](https://github
 
 You can continue to use `vcgencmd` with `commandType: 'vcgencmd',` in your MMM-PIR-Sensor-Lite's config.
 
+## Debug:
+
 ### Sensor test
 
 In your terminal, run the python script after replacing `SENSOR_PIN` by the [GPIO pin](https://pinout.xyz/) of the sensor:
-```
+```shell
 python3 -u ~/MagicMirror/modules/MMM-PIR-Sensor-Lite/pir.py SENSOR_PIN
 ```
 
+> `PIR_START` is displayed in your terminal when the PIR sensor start is confirmed!
+
 > `USER_PRESENCE` is displayed in your terminal when a presence is detected by the sensor!
+
+### Console
+
+In your terminal, go to your MagicMirror's folder:
+```shell
+cd ~/MagicMirror
+```
+
+Run MagicMirror in developper mode (with console):
+```shell
+npm run start:dev
+```
+
+You can follow the information logged by MMM-PIR-Sensor-Lite starting with `MMM-PIR-Sensor-Lite:`!
 
 ### License
 
