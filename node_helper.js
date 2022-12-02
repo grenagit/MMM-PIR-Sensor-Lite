@@ -31,7 +31,7 @@ module.exports = NodeHelper.create({
 				self.sendSocketNotification("STARTED", true);
 				self.started = true;
 			}
-		
+
 			if(data.indexOf("USER_PRESENCE") === 0) {
 				self.sendSocketNotification("USER_PRESENCE", true);
 				self.resetTimeout();
@@ -45,7 +45,7 @@ module.exports = NodeHelper.create({
 	activateMonitor: function() {
 		this.sendSocketNotification("POWER_ON", true);
 		this.activated = true;
-		
+
 		if(!this.config.debugMode) {
 			switch(this.config.commandType) {
 				case 'vcgencmd':
@@ -66,7 +66,7 @@ module.exports = NodeHelper.create({
 	deactivateMonitor: function() {
 		this.sendSocketNotification("POWER_OFF", true);
 		this.activated = false;
-		
+
 		if(!this.config.debugMode) {
 			switch(this.config.commandType) {
 				case 'vcgencmd':
@@ -96,7 +96,7 @@ module.exports = NodeHelper.create({
 
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;
-		if (notification === 'CONFIG' && self.started == false) {
+		if(notification === 'CONFIG' && self.started == false) {
 			self.config = payload;
 			self.activateMonitor();
 
