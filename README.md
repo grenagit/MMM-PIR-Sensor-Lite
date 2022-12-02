@@ -1,7 +1,12 @@
 # Module: MMM-PIR-Sensor-Lite
 This module manage monitor with PIR motion sensor (automatic standby when presence isn't detected).
 
-Title, countdown and detection icon display may be enabled or disabled. 
+Title, countdown and detection icon display may be enabled or disabled.
+
+<p align="left">
+<img alt="MMM-PIR-Sensor-Lite Screenshot #1" src="MMM-PIR-Sensor-Lite_screenshot1.png" height="80px">
+<img alt="MMM-PIR-Sensor-Lite Screenshot #2" src="MMM-PIR-Sensor-Lite_screenshot2.png" height="80px">
+</p>
 
 [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror)
 
@@ -124,7 +129,9 @@ Run MagicMirror in developper mode (with console):
 npm run start:dev
 ```
 
-You can follow the information logged by MMM-PIR-Sensor-Lite starting with `MMM-PIR-Sensor-Lite:`!
+You can follow the information logged by MMM-PIR-Sensor-Lite starting with `MMM-PIR-Sensor-Lite` like this:
+
+<img alt="MMM-PIR-Sensor-Lite Console Log" src="MMM-PIR-Sensor-Lite_console-log.png">
 
 ### License
 
