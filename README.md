@@ -90,7 +90,7 @@ The following properties can be configured:
 | `hoursLabel`                 | Hours label <br> **Default value:** `'h'`
 | `minutesLabel`               | Minutes label <br> **Default value:** `'m'`
 | `secondsLabel`               | Seconds label <br> **Default value:** `'s'`
-| `debugMode`                  | Activate debug mode (command is desabled) <br><br> **Possible values:** `true` or `false` <br> **Default value:** `false`
+| `debugMode`                  | Activate debug mode (command is disabled) <br><br> **Possible values:** `true` or `false` <br> **Default value:** `false`
 
 ### Command
 
