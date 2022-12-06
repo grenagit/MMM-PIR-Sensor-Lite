@@ -27,6 +27,11 @@ module.exports = NodeHelper.create({
 
 		var self = this;
 		process.stdout.on('data', function(data) {
+			if(data.indexOf("PIR_START") === 0) {
+				self.sendSocketNotification("STARTED", true);
+				self.started = true;
+			}
+
 			if(data.indexOf("USER_PRESENCE") === 0) {
 				self.sendSocketNotification("USER_PRESENCE", true);
 				self.resetTimeout();
@@ -40,36 +45,42 @@ module.exports = NodeHelper.create({
 	activateMonitor: function() {
 		this.sendSocketNotification("POWER_ON", true);
 		this.activated = true;
-		switch(this.config.commandType) {
-			case 'vcgencmd':
-				exec("/usr/bin/vcgencmd display_power 1", null);
-				break;
 
-			case 'xrandr':
-				exec("xrandr --output " + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
-				break;
+		if(!this.config.debugMode) {
+			switch(this.config.commandType) {
+				case 'vcgencmd':
+					exec("/usr/bin/vcgencmd display_power 1", null);
+					break;
 
-			case 'xset':
-				exec("xset dpms force on", null);
-				break;
+				case 'xrandr':
+					exec("xrandr --output " + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
+					break;
+
+				case 'xset':
+					exec("xset dpms force on", null);
+					break;
+			}
 		}
 	},
 
 	deactivateMonitor: function() {
 		this.sendSocketNotification("POWER_OFF", true);
 		this.activated = false;
-		switch(this.config.commandType) {
-			case 'vcgencmd':
-				exec("/usr/bin/vcgencmd display_power 0", null);
-				break;
 
-			case 'xrandr':
-				exec("xrandr --output " + this.config.hdmiPort + " --off", null);
-				break;
+		if(!this.config.debugMode) {
+			switch(this.config.commandType) {
+				case 'vcgencmd':
+					exec("/usr/bin/vcgencmd display_power 0", null);
+					break;
 
-			case 'xset':
-				exec("xset dpms force off", null);
-				break;
+				case 'xrandr':
+					exec("xrandr --output " + this.config.hdmiPort + " --off", null);
+					break;
+
+				case 'xset':
+					exec("xset dpms force off", null);
+					break;
+			}
 		}
 	},
 
@@ -85,12 +96,9 @@ module.exports = NodeHelper.create({
 
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;
-		if (notification === 'CONFIG' && self.started == false) {
+		if(notification === 'CONFIG' && self.started == false) {
 			self.config = payload;
 			self.activateMonitor();
-
-			self.sendSocketNotification("STARTED", true);
-			self.started = true;
 
 			self.getDataPIR();
 			self.resetTimeout();

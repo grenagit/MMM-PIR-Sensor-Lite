@@ -22,6 +22,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.IN)
 
+# Indicate PIR sensor start
+print("PIR_START")
+
 # Script
 try:
 	time.sleep(2) # Sensor Stabilization Delay (2 seconds)

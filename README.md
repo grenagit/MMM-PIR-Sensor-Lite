@@ -1,7 +1,12 @@
 # Module: MMM-PIR-Sensor-Lite
 This module manage monitor with PIR motion sensor (automatic standby when presence isn't detected).
 
-Title, countdown and detection icon display may be enabled or disabled. 
+Title, countdown and detection icon display may be enabled or disabled.
+
+<p align="left">
+<img alt="MMM-PIR-Sensor-Lite Screenshot #1" src="MMM-PIR-Sensor-Lite_screenshot1.png" height="80px">
+<img alt="MMM-PIR-Sensor-Lite Screenshot #2" src="MMM-PIR-Sensor-Lite_screenshot2.png" height="80px">
+</p>
 
 [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror)
 
@@ -85,6 +90,7 @@ The following properties can be configured:
 | `hoursLabel`                 | Hours label <br> **Default value:** `'h'`
 | `minutesLabel`               | Minutes label <br> **Default value:** `'m'`
 | `secondsLabel`               | Seconds label <br> **Default value:** `'s'`
+| `debugMode`                  | Activate debug mode (command is desabled) <br><br> **Possible values:** `true` or `false` <br> **Default value:** `false`
 
 ### Command
 
@@ -98,14 +104,34 @@ Due to a problem between [`vcgencmd` on Raspberry Pi OS Bullseye](https://github
 
 You can continue to use `vcgencmd` with `commandType: 'vcgencmd',` in your MMM-PIR-Sensor-Lite's config.
 
+## Debug:
+
 ### Sensor test
 
 In your terminal, run the python script after replacing `SENSOR_PIN` by the [GPIO pin](https://pinout.xyz/) of the sensor:
-```
+```shell
 python3 -u ~/MagicMirror/modules/MMM-PIR-Sensor-Lite/pir.py SENSOR_PIN
 ```
 
+> `PIR_START` is displayed in your terminal when the PIR sensor start is confirmed!
+
 > `USER_PRESENCE` is displayed in your terminal when a presence is detected by the sensor!
+
+### Console
+
+In your terminal, go to your MagicMirror's folder:
+```shell
+cd ~/MagicMirror
+```
+
+Run MagicMirror in developper mode (with console):
+```shell
+npm run start:dev
+```
+
+You can follow the information logged by MMM-PIR-Sensor-Lite starting with `MMM-PIR-Sensor-Lite` like this:
+
+<img alt="MMM-PIR-Sensor-Lite Console Log" src="MMM-PIR-Sensor-Lite_console-log.png">
 
 ### License
 
