@@ -1,6 +1,6 @@
 {
   "name": "MMM-PIR-Sensor-Lite",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Lite module for a Magic Mirror device manage monitor with PIR motion sensor.",
   "main": "MMM-PIR-Sensor-Lite.js",
   "author": "Grena",
