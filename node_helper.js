@@ -53,7 +53,7 @@ module.exports = NodeHelper.create({
 					break;
 
 				case 'xrandr':
-					exec("xrandr --output " + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
+					exec("DISPLAY=:0 xrandr --output " + this.config.hdmiPort + " --rotate " + this.config.rotation + " --auto", null);
 					break;
 
 				case 'xset':
@@ -74,7 +74,7 @@ module.exports = NodeHelper.create({
 					break;
 
 				case 'xrandr':
-					exec("xrandr --output " + this.config.hdmiPort + " --off", null);
+					exec("DISPLAY=:0 xrandr --output " + this.config.hdmiPort + " --off", null);
 					break;
 
 				case 'xset':
